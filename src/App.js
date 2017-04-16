@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Controls from './Controls';
+import Landing from './Landing';
 import '../css/App.css';
 
 class App extends Component {
@@ -18,11 +18,6 @@ class App extends Component {
     this.clickAnalyze = this.clickAnalyze.bind(this)
   }
 
-  get BrianFace() {
-    var classtype;
-    this.state.loading ? classtype = "brianheader-loading" : classtype = "brianheader"
-    return (<img src="brianface.png" id="brianheader" alt="brian head" className={classtype} />)
-  }
 
   clickAnalyze(event) {
     event.preventDefault()
@@ -32,15 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App container">
-        <div className="header-text-block col-md-4 col-md-offset-4">
-          <h1 className="header text-center">Bwiantweetalyzer</h1>
-        </div>
-        <div className="row">
-          <div className="header-img-block col-md-4 col-md-offset-4">
-            {this.BrianFace}
-          </div>
-        </div>
-        <Controls onClickAnalyze={this.clickAnalyze}/>
+        <Landing loading={this.state.loading} onClickAnalyze={this.clickAnalyze}/>
       </div>
     );
   }
