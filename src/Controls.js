@@ -5,7 +5,7 @@ export default class Controls extends Component {
     return (
       <div className="row">
         <div className="col-md-4 col-md-offset-4">
-          <form>
+          <form onSubmit={this.props.onClickAnalyze}>
             <div className="form-group">
               <label htmlFor="numTweets">How many tweets?</label>
               <input className="form-control" type="number" id="numTweets" />
@@ -17,7 +17,7 @@ export default class Controls extends Component {
                 <div className="slider round"></div>
               </label>
             </div>
-            <button id="ctrls-submit" className="btn btn-info btn-block" onClick={this.props.onClickAnalyze}>Analyze</button>
+            <button id="ctrls-submit" className="btn btn-info btn-block">Analyze</button>
           </form>
         </div>
       </div>

@@ -9,8 +9,13 @@ export default class Readout extends Component {
 
   render() {
     return (
-      <div className="col-md-3 col-sm-12 result-box">
-        <h3 className="center">Based on his tweets, Brian is feeling {this.props.label} recently! The tweets are {this.percentage}% {this.props.label}.</h3>
+      <div>
+        <div className="col-md-3 col-md-offset-3">
+          <h3 className="center">Based on his tweets, Brian is feeling {this.props.label} recently! The tweets are {this.percentage}% {this.props.label}.</h3>
+        </div>
+        <div className="col-md-3">
+          {this.props.tweets.map(tweet => (<p>{tweet.text}</p>))}
+        </div>
       </div>
     );
   }

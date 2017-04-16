@@ -25,12 +25,21 @@ class App extends Component {
   async clickAnalyze(event) {
     event.preventDefault()
     this.setState({loading: !this.state.loading})
-    const response = await rp('http://localhost:8081/analyze')
-    const parsed = JSON.parse(response) 
+    const numTweets = document.getElementById('numTweets').value
+    const includeRTs = document.getElementById('rts').checked
+    const options = {
+      uri: 'http://localhost:8081/analyze',
+      qs: {
+        numTweets: numTweets,
+        includeRTs: includeRTs
+      },
+      json: true
+    }
+    const response = await rp(options)
     this.setState({
-      tweets: parsed.tweets,
-      probability: parsed.sentiment.probability,
-      label: parsed.sentiment.label,
+      tweets: response.tweets,
+      probability: response.sentiment.probability,
+      label: response.sentiment.label,
       loading: !this.state.loading,
       results: true
     })
@@ -38,7 +47,7 @@ class App extends Component {
 
   get landingOrReadout() {
     if (this.state.results) {
-      return <Readout probability={this.state.probability} label={this.state.label} />
+      return <Readout tweets={this.state.tweets} probability={this.state.probability} label={this.state.label} />
     } else {
       return <Landing loading={this.state.loading} onClickAnalyze={this.clickAnalyze} />
     }
