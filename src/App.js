@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Landing from './Landing';
+import Readout from './Readout';
 import '../css/App.css';
 const rp = require('request-promise');
 
@@ -29,10 +30,18 @@ class App extends Component {
     this.setState({probability: analysis.probability, label: analysis.label, loading: !this.state.loading, results: true})
   }
 
+  get landingOrReadout() {
+    if (this.state.results) {
+      return <Readout label={this.state.label} />
+    } else {
+      return <Landing loading={this.state.loading} onClickAnalyze={this.clickAnalyze} />
+    }
+  }
+
   render() {
     return (
       <div className="App container">
-        <Landing loading={this.state.loading} onClickAnalyze={this.clickAnalyze}/>
+        {this.landingOrReadout}
       </div>
     );
   }
