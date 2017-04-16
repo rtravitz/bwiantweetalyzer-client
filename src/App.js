@@ -15,7 +15,8 @@ class App extends Component {
       },
       label: "neutral",
       loading: false,
-      results: false
+      results: false,
+      tweets: []
     }
 
     this.clickAnalyze = this.clickAnalyze.bind(this)
@@ -25,14 +26,19 @@ class App extends Component {
     event.preventDefault()
     this.setState({loading: !this.state.loading})
     const response = await rp('http://localhost:8081/analyze')
-    const analysis = JSON.parse(response) 
-    console.log(analysis)
-    this.setState({probability: analysis.probability, label: analysis.label, loading: !this.state.loading, results: true})
+    const parsed = JSON.parse(response) 
+    this.setState({
+      tweets: parsed.tweets,
+      probability: parsed.sentiment.probability,
+      label: parsed.sentiment.label,
+      loading: !this.state.loading,
+      results: true
+    })
   }
 
   get landingOrReadout() {
     if (this.state.results) {
-      return <Readout label={this.state.label} />
+      return <Readout probability={this.state.probability} label={this.state.label} />
     } else {
       return <Landing loading={this.state.loading} onClickAnalyze={this.clickAnalyze} />
     }
