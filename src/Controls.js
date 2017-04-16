@@ -3,16 +3,23 @@ import React, { Component } from 'react';
 export default class Controls extends Component {
   render() {
     return (
-      <div>
-        <form>
-          <label>How many tweets?</label>
-          <input type="text" />
-          <label htmlFor="rts">
-            Include RTs?
-            <input id="rts" type="checkbox" />
-          </label>
-          <button id="ctrls-submit" className="btnBlend">Analyze</button>
-        </form>
+      <div className="row">
+        <div className="col-md-4 col-md-offset-4">
+          <form>
+            <div className="form-group">
+              <label htmlFor="numTweets">How many tweets?</label>
+              <input className="form-control" type="number" id="numTweets" />
+            </div>
+            <div>
+              <label className="slider-label">Include RTs?</label>
+              <label className="switch" htmlFor="rts">
+                <input id="rts" type="checkbox" />
+                <div className="slider round"></div>
+              </label>
+            </div>
+            <button id="ctrls-submit" className="btn btn-info btn-block" onClick={this.props.onClickAnalyze}>Analyze</button>
+          </form>
+        </div>
       </div>
     );
   }

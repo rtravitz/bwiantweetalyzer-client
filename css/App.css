@@ -1,43 +1,113 @@
-#sidebar {
-  background-color: #bfbfbf;
-  border-right: 4px solid #999999;
-  border-bottom: 4px solid #999999;
-  border-radius: 5px;
-  padding: 10px 10px 40px 10px;
+html {
+  background: #007399;
 }
 
-.result-box {
-  background-color: #bfbfbf;
-  padding: 10px;
-  border-radius: 5px;
-  border: 4px solid #999;
-}
-
-input {
-  box-sizing: border-box;
-  width: 100%;
-}
-
-input[type=text] {
-  border-radius: 5px;
-  padding: 10px;
-}
-
-button {
-  border-radius: 5px;
-}
-
-#ctrls-submit {
-  font-size: 1em;
+label {
+  font-size: 2em;
   color: #f2f2f2;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 100%;
-  background-color: #00bfff;
-  border: 3px solid #0099cc;
+}
+
+.App {
+  background: #007399;
+}
+
+#root {
+  background: #007399;
+}
+
+#sidebar {
+  height: 700px;
+}
+
+.brianheader {
+  padding-left: 8%;
+  height: 300px;
+  animation: wiggle 1s infinite;
+}
+
+.brianheader-loading {
+  padding-left: 8%;
+  height: 300px;
+  animation: spin 1.5s infinite;
 }
 
 .header {
-  border-bottom: 3px solid #999;
+  color: #f2f2f2;
+  border-bottom: 1px solid #fff;
+}
+
+.header-img-block {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  transition: .4s;
+}
+
+.slider-label {
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@keyframes wiggle {
+  0%{transform:rotate(3deg);}
+  50%{transform:rotate(-3deg);}
+  100%{transform:rotate(3deg);}
+}
+
+@keyframes spin {
+  0%{transform:rotate(0deg);}
+  50%{transform:rotate(180deg);}
+  100%{transform:rotate(360deg);}
 }
 
