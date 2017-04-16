@@ -3,7 +3,7 @@ html {
 }
 
 label {
-  font-size: 2em;
+  font-size: 1em;
   color: #f2f2f2;
 }
 
@@ -75,7 +75,7 @@ label {
 }
 
 .slider-label {
-  vertical-align: top;
+  vertical-align: 80%;
   margin-right: 10px;
 }
 

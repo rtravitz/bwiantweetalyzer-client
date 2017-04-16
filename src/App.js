@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Landing from './Landing';
 import '../css/App.css';
+const rp = require('request-promise');
 
 class App extends Component {
   constructor(props) {
@@ -12,16 +13,20 @@ class App extends Component {
       "pos": 0.8213764244271774
       },
       label: "neutral",
-      loading: false
+      loading: false,
+      results: false
     }
 
     this.clickAnalyze = this.clickAnalyze.bind(this)
   }
 
-
-  clickAnalyze(event) {
+  async clickAnalyze(event) {
     event.preventDefault()
     this.setState({loading: !this.state.loading})
+    const response = await rp('http://localhost:8081/analyze')
+    const analysis = JSON.parse(response) 
+    console.log(analysis)
+    this.setState({probability: analysis.probability, label: analysis.label, loading: !this.state.loading, results: true})
   }
 
   render() {
