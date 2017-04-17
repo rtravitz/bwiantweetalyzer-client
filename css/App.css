@@ -19,6 +19,24 @@ label {
   height: 700px;
 }
 
+.results-box {
+  animation: fadein 2s;
+}
+
+.results-text {
+  text-align: center;
+  color: #0099cc;
+}
+
+.fadein {
+  animation: fadein 2s;
+}
+
+.results-tweet {
+  border-bottom: 1px solid #1ac6ff;
+  margin-bottom: 20px;
+}
+
 .brianheader {
   padding-left: 8%;
   height: 300px;
@@ -109,5 +127,10 @@ input:checked + .slider:before {
   0%{transform:rotate(0deg);}
   50%{transform:rotate(180deg);}
   100%{transform:rotate(360deg);}
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 

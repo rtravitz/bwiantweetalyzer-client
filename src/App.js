@@ -16,10 +16,11 @@ class App extends Component {
       label: "neutral",
       loading: false,
       results: false,
-      tweets: []
+      tweets: [{text: "testing tweet"},{text: "testing tweet"},{text: "testing tweet"},{text: "testing tweet"}]
     }
 
     this.clickAnalyze = this.clickAnalyze.bind(this)
+    this.clickGoAgain = this.clickGoAgain.bind(this)
   }
 
   async clickAnalyze(event) {
@@ -36,6 +37,7 @@ class App extends Component {
       json: true
     }
     const response = await rp(options)
+    console.log(response)
     this.setState({
       tweets: response.tweets,
       probability: response.sentiment.probability,
@@ -45,9 +47,13 @@ class App extends Component {
     })
   }
 
+  clickGoAgain() {
+    this.setState({results: false})
+  }
+
   get landingOrReadout() {
     if (this.state.results) {
-      return <Readout tweets={this.state.tweets} probability={this.state.probability} label={this.state.label} />
+      return <Readout tweets={this.state.tweets} probability={this.state.probability} label={this.state.label} onGoAgain={this.clickGoAgain} />
     } else {
       return <Landing loading={this.state.loading} onClickAnalyze={this.clickAnalyze} />
     }

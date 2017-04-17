@@ -10,7 +10,7 @@ export default class Landing extends Component {
 
   render() {
     return (
-      <div>
+      <div className="fadein">
         <div className="header-text-block col-md-4 col-md-offset-4">
           <h1 className="header text-center">Bwiantweetalyzer</h1>
         </div>
