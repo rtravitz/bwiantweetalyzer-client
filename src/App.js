@@ -3,7 +3,7 @@ import Landing from './Landing';
 import Readout from './Readout';
 import '../css/App.css';
 const rp = require('request-promise');
-const API_BASE = "https://damp-temple-92591.herokuapp.com"
+const API_BASE = "https://stormy-plains-69553.herokuapp.com"
 
 class App extends Component {
   constructor(props) {
