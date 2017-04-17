@@ -3,6 +3,7 @@ import Landing from './Landing';
 import Readout from './Readout';
 import '../css/App.css';
 const rp = require('request-promise');
+const API_BASE = "https://damp-temple-92591.herokuapp.com"
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class App extends Component {
     const numTweets = document.getElementById('numTweets').value
     const includeRTs = document.getElementById('rts').checked
     const options = {
-      uri: 'http://localhost:8081/analyze',
+      uri: API_BASE + '/analyze',
       qs: {
         numTweets: numTweets,
         includeRTs: includeRTs
