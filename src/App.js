@@ -38,7 +38,6 @@ class App extends Component {
       json: true
     }
     const response = await rp(options)
-    console.log(response)
     this.setState({
       tweets: response.tweets,
       probability: response.sentiment.probability,

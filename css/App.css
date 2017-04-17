@@ -37,14 +37,23 @@ label {
   margin-bottom: 20px;
 }
 
+#brianheader {
+  display: block;
+  margin: auto;
+}
+
 .brianheader {
-  padding-left: 8%;
   height: 300px;
   animation: wiggle 1s infinite;
 }
 
+.reaction-head {
+  display: block;
+  height: 300px;
+  margin: auto;
+}
+
 .brianheader-loading {
-  padding-left: 8%;
   height: 300px;
   animation: spin 1.5s infinite;
 }
